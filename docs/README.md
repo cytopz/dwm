@@ -2,9 +2,10 @@
 lightly costumized build of suckless's window manager -- dwm
 
 # patches
-- actual fullscreen
+- actualfullscreen
 - autostart
 - uselessgaps
+- centeredmaster
 - statuscmd - for [dwmblocks](https://github.com/torrinfail/dwmblocks)
 
 # screenshot
