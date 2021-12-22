@@ -7,15 +7,18 @@ static const unsigned int gappx     = 6;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Iosevka Term:size=10", 
-                                        "Siji:size=10", 
-                                        "WenQuanYi Bitmap Song:size=9" };
+static const char *fonts[]          = { 
+  "JetBrains Mono:size=9", 
+  "Siji:size=10",
+  "Kairaga:size=9" 
+};
 
 /* color */
 #include "/home/rhg/.cache/wal/colors-wal-dwm.h"
 
 /* tagging */
-static const char *tags[] = { "一", "二", "三", "四", "五", "六", "七", "八", "九" };
+// static const char *tags[] = { "一", "二", "三", "四", "五", "六", "七", "八", "九" };
+static const char *tags[] = { "᮰", "᮱",	"᮲", "᮳",	"᮴", "᮵", "᮶",	"᮷", "᮸" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -24,18 +27,21 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "qutebrowser",     NULL,       NULL,       1 << 0,            0,           -1 },
+	{ "brave-browser",   NULL,       NULL,       1 << 0,            0,           -1 },
+	{ "Brave-browser",   NULL,       NULL,       1 << 0,            0,           -1 },
 	{ "chatterino",      NULL,       NULL,       1 << 4,            0,           -1 },
 	{ "mpv",             NULL,       NULL,       1 << 4,            0,           -1 },
 	{ "urxvt",           NULL,       NULL,       0,                 0,           -1 },
 	{ "URxvt",           NULL,       NULL,       0,                 0,           -1 },
 	{ "code - oss",      NULL,       NULL,       1 << 2,            0,           -1 },
 	{ "Code - OSS",      NULL,       NULL,       1 << 2,            0,           -1 },
+	{ "trayer",          NULL,       NULL,       1 << 8,            0,           -1 },
 };
 
 /* layout(s) */
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
-static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
+static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
@@ -74,6 +80,7 @@ static Key keys[] = {
   { MODKEY,                       XK_c,      spawn,          SHCMD("toggle-picom") },
   { MODKEY,                       XK_s,      spawn,          SHCMD("screencast") },
   { MODKEY,                       XK_g,      spawn,          SHCMD("gacha-track") },
+  { MODKEY,                       XK_p,      spawn,          SHCMD("power-menu.sh") },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -85,7 +92,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
+	{ MODKEY|ShiftMask,             XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY|ShiftMask,             XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[3]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
@@ -97,9 +104,9 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-  { 0, XF86XK_AudioMute,		    spawn,		SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
-	{ 0, XF86XK_AudioRaiseVolume,	spawn,		SHCMD("pamixer -i 10; kill -44 $(pidof dwmblocks)") },
-	{ 0, XF86XK_AudioLowerVolume,	spawn,		SHCMD("pamixer -d 10; kill -44 $(pidof dwmblocks)") },
+  { 0, XF86XK_AudioMute,		      spawn,		SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
+	{ 0, XF86XK_AudioRaiseVolume,	  spawn,		SHCMD("pamixer -i 10; kill -44 $(pidof dwmblocks)") },
+	{ 0, XF86XK_AudioLowerVolume,	  spawn,		SHCMD("pamixer -d 10; kill -44 $(pidof dwmblocks)") },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
