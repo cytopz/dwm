@@ -8,9 +8,9 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { 
-  "JetBrains Mono:size=9", 
+  "JetBrains Mono:size=10", 
   "Siji:size=10",
-  "Kairaga:size=9" 
+  "Kairaga:size=10" 
 };
 
 /* color */
@@ -26,22 +26,22 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "qutebrowser",     NULL,       NULL,       1 << 0,            0,           -1 },
+	{ "Firefox",         NULL,       NULL,       1 << 0,            0,           -1 },
 	{ "brave-browser",   NULL,       NULL,       1 << 0,            0,           -1 },
 	{ "Brave-browser",   NULL,       NULL,       1 << 0,            0,           -1 },
+	{ "discord",         NULL,       NULL,       1 << 2,            0,           -1 },
 	{ "chatterino",      NULL,       NULL,       1 << 4,            0,           -1 },
 	{ "mpv",             NULL,       NULL,       1 << 4,            0,           -1 },
+	{ "st",              NULL,       NULL,       0,                 0,           -1 },
 	{ "urxvt",           NULL,       NULL,       0,                 0,           -1 },
 	{ "URxvt",           NULL,       NULL,       0,                 0,           -1 },
-	{ "code - oss",      NULL,       NULL,       1 << 2,            0,           -1 },
-	{ "Code - OSS",      NULL,       NULL,       1 << 2,            0,           -1 },
 	{ "trayer",          NULL,       NULL,       1 << 8,            0,           -1 },
 };
 
 /* layout(s) */
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
-static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
+static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
 static const Layout layouts[] = {
@@ -65,8 +65,8 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run" };
-static const char *termcmd[]  = { "urxvt", NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-i", NULL };
+static const char *termcmd[]  = { "st", NULL };
 
 #include <X11/XF86keysym.h>
 static Key keys[] = {
